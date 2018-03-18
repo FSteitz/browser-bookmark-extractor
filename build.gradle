@@ -2,6 +2,7 @@ buildscript {
   ext.kotlin_version = '1.2.30'
 
   repositories {
+    mavenLocal()
     mavenCentral()
   }
 
@@ -13,11 +14,13 @@ buildscript {
 apply plugin: 'kotlin'
 
 repositories {
+  mavenLocal()
   mavenCentral()
 }
 
 dependencies {
   compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+  compile "com.github.fsteitz:jsoup-extensions:1.0.0-SNAPSHOT"
 }
 
 compileKotlin {
