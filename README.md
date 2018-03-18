@@ -8,4 +8,7 @@ This application depends on the library [jsoup-extensions](https://github.com/FS
 `./gradlew build`
 
 ## Running the application
+Before the application can be run, a bookmark file must be added to the resource folder. By default this file should be named `bookmarks.html`. In case a different file name is preferred, the value of the variable `BOOKMARK_FILE_NAME` in `Main.kt` must be changed to the preferred name.
+
+The application can then be run with the following command:
 `./gradlew run`
