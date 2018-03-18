@@ -5,3 +5,5 @@ build/
 
 # Files
 *.iml
+
+*/**/bookmarks.html
