@@ -4,5 +4,8 @@ A small Kotlin-based CLI application for extracting bookmark URLs from a Netscap
 ## Prerequisites
 This application depends on the library [jsoup-extensions](https://github.com/FSteitz/jsoup-extensions), which currently isnt available in Maven Central or any other online artifact repository. Hence its source must be pulled and built before the application can be built or run.
 
-## Building the library
+## Building the application
 `./gradlew build`
+
+## Running the application
+`./gradlew run`
