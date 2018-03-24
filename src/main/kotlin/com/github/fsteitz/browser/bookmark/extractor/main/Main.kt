@@ -14,21 +14,20 @@
  * limitations under the License.
  */
 
+import com.github.fsteitz.browser.bookmark.extractor.BookmarkDiskPersister
 import com.github.fsteitz.browser.bookmark.extractor.FolderBookmarkExtractor
 import java.io.File
 import java.io.FileNotFoundException
 import java.net.URL
 import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
-import java.nio.file.Files
-import java.nio.file.Paths
 
 /**
  * @author Florian Steitz (florian@fsteitz.com)
  */
 const val BOOKMARK_FOLDER = "Vocabs"
 const val BOOKMARK_FILE_NAME = "bookmarks.html"
-const val RESULT_FILE_NAME = "extracted-bookmarks.txt"
+const val RESULT_FILE_NAME = "bookmark.json"
 
 val CHARSET = StandardCharsets.UTF_8 as Charset
 
@@ -54,11 +53,6 @@ fun getClasspathResource(fileName: String): URL {
  *
  */
 fun writeToDisk(bookmarkUrls: Collection<String>, folderPath: String) {
-  val resultFileContent = bookmarkUrls.joinToString(separator = "\n")
-  val resultFilePath = folderPath + File.separator + RESULT_FILE_NAME
-
   println("Found ${bookmarkUrls.size} bookmarks in bookmark folder '$BOOKMARK_FOLDER'")
-  println("Writing extracted bookmark URLs to '$resultFilePath'")
-
-  Files.write(Paths.get(resultFilePath), resultFileContent.toByteArray(CHARSET))
+  BookmarkDiskPersister.persist(bookmarkUrls, folderPath + File.separator + RESULT_FILE_NAME, CHARSET)
 }
