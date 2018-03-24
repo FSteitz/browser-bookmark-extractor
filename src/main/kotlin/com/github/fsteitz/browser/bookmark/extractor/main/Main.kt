@@ -29,7 +29,7 @@ const val BOOKMARK_FOLDER = "Vocabs"
 const val BOOKMARK_FILE_NAME = "bookmarks.html"
 const val RESULT_FILE_NAME = "bookmark.json"
 
-val CHARSET = StandardCharsets.UTF_8 as Charset
+val charset = StandardCharsets.UTF_8 as Charset
 
 /**
  *
@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
   val bookmarkFile = File(getClasspathResource(BOOKMARK_FILE_NAME).file)
 
   println("Parsing file '${bookmarkFile.absolutePath}'")
-  writeToDisk(FolderBookmarkExtractor(BOOKMARK_FOLDER, bookmarkFile, CHARSET).extract(), bookmarkFile.parent)
+  writeToDisk(FolderBookmarkExtractor(BOOKMARK_FOLDER, bookmarkFile, charset).extract(), bookmarkFile.parent)
 }
 
 /**
@@ -54,5 +54,5 @@ fun getClasspathResource(fileName: String): URL {
  */
 fun writeToDisk(bookmarkUrls: Collection<String>, folderPath: String) {
   println("Found ${bookmarkUrls.size} bookmarks in bookmark folder '$BOOKMARK_FOLDER'")
-  BookmarkDiskPersister.persist(bookmarkUrls, folderPath + File.separator + RESULT_FILE_NAME, CHARSET)
+  BookmarkDiskPersister.persist(bookmarkUrls, folderPath + File.separator + RESULT_FILE_NAME, charset)
 }
